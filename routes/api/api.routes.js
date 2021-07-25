@@ -25,7 +25,7 @@ class ApiRouterClass {
 
   routes() {
     apiRouter.get(`/temperature`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData('-1h', 'Temperature', 'global'), config)
+      axios.post(process.env.URL, this.getPostData('1627207493', 'Temperature', 'global'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => res.json({
@@ -37,7 +37,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/luminosity`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData('-1h', 'Luminosite', 'global'), config)
+      axios.post(process.env.URL, this.getPostData('1627207493', 'Luminosite', 'global'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => res.json({
@@ -49,7 +49,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/air`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData('-1h', 'Humidite', 'global'), config)
+      axios.post(process.env.URL, this.getPostData('1627207493', 'Humidite', 'global'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => res.json({
@@ -61,7 +61,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/basilic`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData('-1h', 'Humidite', 'basilic'), config)
+      axios.post(process.env.URL, this.getPostData('1627207493', 'Humidite', 'basilic'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => res.json({
@@ -73,7 +73,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/menthe`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData('-1h', 'Humidite', 'menthe'), config)
+      axios.post(process.env.URL, this.getPostData('1627207493', 'Humidite', 'menthe'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => res.json({
@@ -85,7 +85,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/poivron`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData('-1h', 'Humidite', 'poivron'), config)
+      axios.post(process.env.URL, this.getPostData('1627207493', 'Humidite', 'poivron'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => res.json({
@@ -97,7 +97,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/tomate`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData('-1h', 'Humidite', 'tomate'), config)
+      axios.post(process.env.URL, this.getPostData('1627207493', 'Humidite', 'tomate'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => res.json({
