@@ -66,6 +66,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/luminosity`, (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Luminosite', 'global', '001/121'), config)
         .then(response => {
           csv().fromString(response.data)
@@ -87,6 +88,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/air`, (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'global', '001/114'), config)
         .then(response => {
           csv().fromString(response.data)
@@ -108,6 +110,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/basilic`, (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'basilic', '004/114'), config)
         .then(response => {
           csv().fromString(response.data)
@@ -129,6 +132,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/menthe`, (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'menthe', '005/114'), config)
         .then(response => {
           csv().fromString(response.data)
@@ -150,6 +154,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/poivron`, (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'poivron', '003/114'), config)
         .then(response => {
           csv().fromString(response.data)
@@ -171,6 +176,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/tomate`, (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'tomate', '002/114'), config)
         .then(response => {
           csv().fromString(response.data)
