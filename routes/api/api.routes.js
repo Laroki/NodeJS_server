@@ -19,12 +19,13 @@ let startValue;
 class ApiRouterClass {
   constructor() { };
 
-  getPostData(start, measurement, nodeId) {
+  getPostData(start, measurement, nodeId, topic) {
     return `from(bucket:"mqtthetic")
     |> range(start:${start})
     |> filter(fn: (r) => r["_measurement"] == "${measurement}")
     |> filter(fn: (r) => r["_field"] == "data_value")
-    |> filter(fn: (r) => r["nodeID"] == "${nodeId}")`
+    |> filter(fn: (r) => r["nodeID"] == "${nodeId}")
+    |> filter(fn: (r) => r["topic"] == "WEB3-VENIVERDI/${topic}")`
   };
 
   getWidgetData(arr) {
@@ -43,7 +44,7 @@ class ApiRouterClass {
 
   routes() {
     apiRouter.get(`/temperature`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Temperature', 'global'), config)
+      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Temperature', 'global', '001/112'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => {
@@ -64,7 +65,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/luminosity`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Luminosite', 'global'), config)
+      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Luminosite', 'global', '001/121'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => {
@@ -85,7 +86,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/air`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'global'), config)
+      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'global', '001/114'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => {
@@ -106,7 +107,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/basilic`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'basilic'), config)
+      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'basilic', '004/114'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => {
@@ -127,7 +128,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/menthe`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'menthe'), config)
+      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'menthe', '005/114'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => {
@@ -148,7 +149,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/poivron`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'poivron'), config)
+      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'poivron', '003/114'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => {
@@ -169,7 +170,7 @@ class ApiRouterClass {
     });
 
     apiRouter.get(`/humidity/tomate`, (req, res) => {
-      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'tomate'), config)
+      axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Humidite', 'tomate', '002/114'), config)
         .then(response => {
           csv().fromString(response.data)
             .then((data) => {
