@@ -44,6 +44,7 @@ class ApiRouterClass {
 
   routes() {
     apiRouter.get(`/temperature`, (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       axios.post(process.env.URL, this.getPostData(this.getStartValue(req.query.widget), 'Temperature', 'global', '001/112'), config)
         .then(response => {
           csv().fromString(response.data)
